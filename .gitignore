@@ -1,0 +1,10 @@
+# Ignore macOS system files
+.DS_Store
+.AppleDouble
+
+# Ignore Python-related files
+__pycache__
+
+# Ignore Firebase-related files
+firebase.json
+firebase-debug.log
