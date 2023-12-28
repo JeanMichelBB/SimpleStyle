@@ -2,6 +2,7 @@
 from pydantic import BaseModel
 
 class Product(BaseModel):
+    id: str 
     name: str
     brand: str
     description: str
@@ -10,3 +11,4 @@ class Product(BaseModel):
     color: str
     size: str = None
     quantity: int = None
+    image: str = None

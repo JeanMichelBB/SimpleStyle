@@ -1,0 +1,14 @@
+#root {
+
+  text-align: center;
+  color: black;
+  margin: 0;
+
+}
+
+a {
+  color: #61dafb;
+  /* make it look better */
+  text-decoration: none;
+  size: 1rem;
+}

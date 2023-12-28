@@ -1,0 +1,14 @@
+/* src/components/Hero/Hero.css */
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.hero-btns {
+    margin-top: 32px;
+}
