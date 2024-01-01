@@ -7,7 +7,6 @@ router = APIRouter()
 
 @router.get("/products", response_model=list[Product])
 async def read_products(category: str = Query(None, description="Filter products by category")):
-    # Retrieve all products from the "products" node in the Realtime Database
     products = db_ref.child("products").get()
     if products is not None:
         if category:
@@ -20,15 +19,27 @@ async def read_products(category: str = Query(None, description="Filter products
 @router.post("/products", response_model=Product)
 async def create_product(product: Product):
     product_data = product.dict()
-    db_ref.child("products").push(product_data)
+    
+    if product_data["id"] is None:
+        raise HTTPException(status_code=400, detail="Product ID cannot be None")
+
+    db_ref.child("products").child(product_data["id"]).set(product_data)
+    
     return product
 
 @router.get("/products/{product_id}", response_model=Product)
 async def read_product(product_id: str):
     product_data = db_ref.child("products").child(product_id).get()
-    if product_data is not None:
-        return Product(**product_data, id=product_id)
+    
+    if product_data:
+        product_dict = product_data
+        product_dict['id'] = product_id  # Add 'id' to the dictionary
+        product = Product(**product_dict)
+        return product
+
     raise HTTPException(status_code=404, detail="Product not found")
+
+
 
 @router.put("/products/{product_id}", response_model=Product)
 async def update_product(product_id: str, updated_product: Product):

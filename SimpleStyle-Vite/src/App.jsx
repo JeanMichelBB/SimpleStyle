@@ -1,22 +1,24 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Home from './pages/Home/Home'
-import About from './pages/About/About'
-import Contact from './pages/Contact/Contact'
-import NotFound from './pages/NotFound/NotFound'
-import Login from './pages/Login/Login'
-import Account from './pages/Account/Account'
-import Cart from './pages/Cart/Cart'
-import Checkout from './pages/Checkout/Checkout'
-import Products from './pages/Products/Products'
-import AdminPage from './pages/AdminPage/AdminPage'
-import './App.css'
+// src/App.jsx
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './pages/Home/Home';
+import About from './pages/About/About';
+import Contact from './pages/Contact/Contact';
+import NotFound from './pages/NotFound/NotFound';
+import Login from './pages/Login/Login';
+import SignIn from './pages/SignUp/SignUp';
+import Account from './pages/Account/Account';
+import Cart from './pages/Cart/Cart';
+import Checkout from './pages/Checkout/Checkout';
+import Products from './pages/Products/Products';
+import AdminPage from './pages/AdminPage/AdminPage';
+import { CartProvider } from './Context/CartContext'; 
+
+import './App.css';
 
 function App() {
-
-
   return (
-    <>
+    <CartProvider>
       <Router>
         <Switch>
           <Route exact path="/">
@@ -30,6 +32,9 @@ function App() {
           </Route>
           <Route path="/Login">
             <Login />
+          </Route>
+          <Route path="/SignIn">
+            <SignIn />
           </Route>
           <Route path="/Account">
             <Account />
@@ -51,9 +56,8 @@ function App() {
           </Route>
         </Switch>
       </Router>
-      
-    </>
-  )
+    </CartProvider>
+  );
 }
 
-export default App
+export default App;

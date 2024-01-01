@@ -5,12 +5,14 @@ import '../../App.css'
 import './Login.css'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
+import LoginForm from '../../components/LoginForm/LoginForm'
 
 function Login() {
     return (
         <>
         <Header />
         <h1>Login</h1>
+        <LoginForm />
        
         <Footer />
         </>

@@ -1,12 +1,15 @@
+// src/components/ProductDetails/ProductDetails.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom'; // Import useHistory
+import { useHistory } from 'react-router-dom';
+import ProductDetails from '../ProductDetails/ProductDetails'; // Import ProductDetails
 import './ProductList.css';
 import '../../App.css';
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
-  const history = useHistory(); // Initialize useHistory
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const history = useHistory();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -21,9 +24,9 @@ const ProductList = () => {
     fetchProducts();
   }, []);
 
-  // Function to handle the redirect
-  const redirectToProduct = (productId) => {
-    history.push(`/products/${productId}`);
+  const redirectToProduct = (product) => {
+    setSelectedProduct(product);
+    history.push(`/products/${product.id}`, { product });
   };
 
   return (
@@ -32,7 +35,7 @@ const ProductList = () => {
         <div
           key={product.id}
           className="clothing-item"
-          onClick={() => redirectToProduct(product.id)} 
+          onClick={() => redirectToProduct(product)}
         >
           <img src={product.image} alt={product.name} className="clothing-image" />
           <div className="clothing-info">
@@ -42,6 +45,8 @@ const ProductList = () => {
           </div>
         </div>
       ))}
+
+      {selectedProduct && <ProductDetails product={selectedProduct} />}
     </div>
   );
 };

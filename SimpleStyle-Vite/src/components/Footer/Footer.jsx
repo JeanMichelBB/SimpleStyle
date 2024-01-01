@@ -8,7 +8,6 @@ function Footer() {
     return (
         <>
             <footer className='footer'>
-                {/* basic footer */}
                 <ul className='footer'>
                     <li className='footer__item'>
                         <Link to='/' className='footer__link'>Home</Link>
@@ -28,8 +27,9 @@ function Footer() {
                     <li className='footer__item'>
                         <Link to='/cart' className='footer__link'>Cart</Link>
                     </li>
-                    
-
+                    <li className='footer__item'>
+                        <Link to="/AdminPage">AdminPage</Link>
+                    </li>
                 </ul>
             </footer>
         </>

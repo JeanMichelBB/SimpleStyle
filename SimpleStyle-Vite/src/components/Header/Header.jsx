@@ -24,7 +24,6 @@ function Header() {
                 <br />
                 <Link to="/Cart">Cart</Link>
                 <br />
-                <Link to="/AdminPage">AdminPage</Link>
                 </div>
             </header>
         </>

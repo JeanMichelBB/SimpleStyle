@@ -1,6 +1,6 @@
-/* src/components/AdminAddClothingForm/AdminAddClothingForm.css */
+/* src/components/SignUpForm/SignUpForm.css */
 
-.admin-add-clothing-form {
+.sign-in-form-container {
     max-width: 400px;
     margin: auto;
     padding: 20px;
@@ -10,20 +10,22 @@
     background-color: #fff;
   }
   
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
   label {
     display: block;
     font-size: 14px;
     margin-bottom: 5px;
   }
   
-  input,
-  textarea {
+  input {
     width: 100%;
     padding: 8px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    margin-bottom: 10px;
   }
   
   button {

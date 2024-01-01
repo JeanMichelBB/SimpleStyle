@@ -8,7 +8,23 @@
 
 a {
   color: #61dafb;
-  /* make it look better */
   text-decoration: none;
   size: 1rem;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #ffffff;
+  color: black;
+}
+textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #ffffff;
+  color: black;
 }

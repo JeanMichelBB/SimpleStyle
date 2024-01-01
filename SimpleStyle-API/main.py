@@ -1,10 +1,13 @@
 # main.py
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI
 from api import product as product_router
 from api import category as category_router
 from api import order as order_router
 from api.endpoints import authentication
 from fastapi.middleware.cors import CORSMiddleware
+from firebase.firebase_utils import initialize_firebase_admin
+
+initialize_firebase_admin()
 
 app = FastAPI()
 
@@ -17,9 +20,6 @@ app.add_middleware(
 )
 
 app.include_router(product_router.router, prefix="/api/v1")
-
 app.include_router(category_router.router, prefix="/api/v1")
-
 app.include_router(order_router.router, prefix="/api/v1")
-
 app.include_router(authentication.router, prefix="/api/auth")

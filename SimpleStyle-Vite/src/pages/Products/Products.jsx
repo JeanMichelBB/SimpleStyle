@@ -5,13 +5,13 @@ import '../../App.css'
 import './Products.css'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
+import ProductDetails from '../../components/ProductDetails/ProductDetails'
 
 function Products() {
     return (
         <>
         <Header />
-        <h1>Products</h1>
-       
+        <ProductDetails />
         <Footer />
         </>
     )
