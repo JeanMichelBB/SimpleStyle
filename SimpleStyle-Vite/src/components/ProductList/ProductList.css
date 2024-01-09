@@ -1,39 +1,40 @@
 /* src/components/ProductList/ProductList.css */
+
 .clothing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 0 200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0 200px;
+}
 
-  }
-  
-  .clothing-item {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
+.clothing-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column; /* Ensure items are displayed vertically */
+}
 
-  }
-  
-  .clothing-image {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .clothing-info {
-    margin-top: 10px;
-  }
-  
-  .clothing-name {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-  }
-  
-  .clothing-price {
-    color: #2ecc71; /* Green color for price */
-  }
-  
-  .clothing-size {
-    font-style: italic;
-  }
-  
+.clothing-image {
+  max-width: 100%;
+  height: 100%; /* Use 100% height to maintain aspect ratio */
+  object-fit: cover; /* Maintain aspect ratio without stretching */
+}
+
+.clothing-info {
+  margin-top: 10px;
+}
+
+.clothing-name {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.clothing-price {
+  color: #2ecc71; /* Green color for price */
+}
+
+.clothing-size {
+  font-style: italic;
+}

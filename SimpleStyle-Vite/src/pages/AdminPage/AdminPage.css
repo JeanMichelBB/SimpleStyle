@@ -1,0 +1,12 @@
+/* src/pages/AdminPage/AdminPage.css */
+
+.admin-forms-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; 
+  }
+  
+  .admin-forms-container > div {
+    width: 48%; 
+  }
+  

@@ -1,0 +1,16 @@
+/* src/components/AccountDetails/AccountDetails.css */
+.account-details-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.info-item {
+  margin-bottom: 10px;
+  padding: 9px;
+}

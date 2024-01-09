@@ -1,0 +1,42 @@
+/* src/components/OrdersDetails/OrdersDetails.css */
+.orders-details-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .orders-details-container h2 {
+    color: #333;
+  }
+  
+  .orders-details-container p {
+    margin-bottom: 10px;
+  }
+  
+  .orders-details-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .orders-details-container li {
+    margin-bottom: 5px;
+  }
+  
+  .orders-details-container button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .orders-details-container button:hover {
+    background-color: #45a049;
+  }
+  

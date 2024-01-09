@@ -12,13 +12,12 @@ import Cart from './pages/Cart/Cart';
 import Checkout from './pages/Checkout/Checkout';
 import Products from './pages/Products/Products';
 import AdminPage from './pages/AdminPage/AdminPage';
-import { CartProvider } from './Context/CartContext'; 
 
 import './App.css';
 
 function App() {
   return (
-    <CartProvider>
+    
       <Router>
         <Switch>
           <Route exact path="/">
@@ -56,7 +55,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </CartProvider>
+    
   );
 }
 

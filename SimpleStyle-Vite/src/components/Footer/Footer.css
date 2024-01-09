@@ -1,14 +1,55 @@
+/* src/components/Footer/Footer.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: calc(100vh - 600px);
+}
+
 .footer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    margin-top: 2rem;
-    border-top: 1px solid #eaeaea;
-    background-color: #f9f9f9;
-    gap: 2rem;
-    padding: 10px;
-    bottom: 0;
-    width: 100%;
+  width: 100%;
+  background-color: #f9f9f9;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.footer__item {
+  margin: 0 15px;
+}
+
+.footer__link:hover {
+  text-decoration: underline;
+}
+
+.footer__signature {
+  font-size: 0.8rem;
+  display: flex; /* Make the signature and Unsplash text side by side */
+  justify-content: center;
+  gap: 5px;
+}
+
+.footer__signature-text a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.footer__signature-text a:hover {
+  text-decoration: underline;
 }

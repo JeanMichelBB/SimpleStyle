@@ -1,1 +1,52 @@
 /* src/components/AdminUpdateClothingForm/AdminUpdateClothingForm.css */
+
+.admin-update-clothing-form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .admin-update-clothing-form label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .admin-update-clothing-form input,
+  .admin-update-clothing-form textarea,
+  .admin-update-clothing-form select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  
+  .admin-update-clothing-form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .admin-update-clothing-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .admin-update-clothing-form .button-group {
+    margin-top: 10px;
+  }
+  .admin-update-clothing-form-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }

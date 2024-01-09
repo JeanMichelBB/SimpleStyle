@@ -111,6 +111,7 @@ const AdminUpdateClothingForm = ({ onUpdateClothing }) => {
                                 Image URL:
                                 <input type="text" name="image" value={updatedProduct.image} onChange={handleChange} />
                             </label>
+                            <img className='admin-update-clothing-form-image' src={updatedProduct.image} alt={updatedProduct.name} />
                             <div className="button-group">
                                 <button onClick={handleUpdateClothing}>Update Clothing</button>
                             </div>

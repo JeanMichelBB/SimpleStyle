@@ -1,4 +1,22 @@
 /* src/pages/Account/Account.css */
-.Account {
-  text-align: center;
+.account-page-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 200px auto;
+}
+
+.account-details-container,
+.auth-details-container,
+.orders-details-container {
+  width: 30%;
+  margin: 10px;
+}
+
+@media (max-width: 768px) {
+  .account-details-container,
+  .auth-details-container,
+  .orders-details-container {
+    width: 100%; 
+  }
 }

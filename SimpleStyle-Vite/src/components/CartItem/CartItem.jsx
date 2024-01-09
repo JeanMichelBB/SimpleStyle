@@ -1,46 +1,143 @@
-// src/components/CartItem/CartItem.jsx
-import React from 'react';
-import { useCart } from '../../Context/CartContext';
-import './CartItem.css'; 
+import React, { useEffect, useState } from 'react';
+import './CartItem.css';
 
-const CartItem = ({ total, onProcessPayment }) => {
-    const { cartItems, removeFromCart } = useCart();
+const CartItem = () => {
+  const [userCart, setUserCart] = useState([]);
+  const [productInfo, setProductInfo] = useState({});
+  const [updatedQuantity, setUpdatedQuantity] = useState({});
+  const userId = localStorage.getItem('user_id');
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/api/v1/users/${userId}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-const renderProducts = () => {
-    if (!cartItems || cartItems.length === 0) {
-        return <p>Your cart is empty.</p>;
-    }
+        const userData = await response.json();
+        setUserCart(userData.cart || []);
 
-    return cartItems.map((item) => (
-        <div key={item.id} className="cart-product">
-        <img src={item.image} alt={item.name} className="cart-product-image" />
-        <div className="cart-product-info">
-            <h3>{item.name}</h3>
-            <p>Price: ${item.price}</p>
-            <button onClick={() => removeFromCart(item.id)}>Remove from Cart</button>
-        </div>
-        </div>
-    ));
+       const productInfoPromises = userData.cart.map(async (item) => {
+          const productResponse = await fetch(`http://127.0.0.1:8000/api/v1/products/${item.product_id}`);
+          const productData = await productResponse.json();
+          return { productId: item.product_id, ...productData };
+        }); 
+
+        const productInfoList = await Promise.all(productInfoPromises);
+
+        const productInfoMap = {};
+        productInfoList.forEach((product) => {
+          productInfoMap[product.productId] = product;
+        });
+        setProductInfo(productInfoMap);
+      } catch (error) {
+        console.error('Error fetching user data:', error.message);
+      }
     };
-  
+
+    fetchUserData();
+  }, [userId]);
+
+  const handleQuantityChange = (productId, newQuantity) => {
+    setUpdatedQuantity({ ...updatedQuantity, [productId]: newQuantity });
+  };
+
+  const handleChangeQuantity = async (productId) => {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/v1/cart/change_quantity/${userId}?product_id=${productId}&new_quantity=${updatedQuantity[productId] || 0}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const updatedCart = userCart.map(item =>
+        item.product_id === productId ? { ...item, quantity: updatedQuantity[productId] } : item
+      );
+      setUserCart(updatedCart);
+      setUpdatedQuantity({});
+      window.location.reload();
+    } catch (error) {
+      console.error('Error changing quantity:', error.message);
+    }
+  };
+
+  const handleDeleteProduct = async (productId) => {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/v1/cart/${userId}/remove?product_id=${productId}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const updatedCart = userCart.filter(item => item.product_id !== productId);
+      setUserCart(updatedCart);
+      window.location.reload();
+    } catch (error) {
+      console.error('Error deleting product from cart:', error.message);
+    }
+  };
+
+  if (userCart.length === 0 || (Array.isArray(userCart[0]) && userCart[0][0] === '')) {
     return (
       <div className="cart-item-container">
-        <div className="cart-products-list">
-          <h2>Cart</h2>
-          {renderProducts()}
-        </div>
-        <div className="cart-summary">
-          <h2>Summary</h2>
-          <div className="cart-summary-details">
-            <p>Total Items: {cartItems.length}</p>
-            <p>Total Price: ${total}</p>
-          </div>
-          <button onClick={onProcessPayment}>Process Payment</button>
-        </div>
+        <h2>Cart is Empty</h2>
       </div>
     );
-  };
+  }
+
+  return (
+    <div className="container">
+      <h2>Cart Items</h2>
+    <div className="cart-item-container">
+      <ul>
+        {userCart.map((item, index) => (
+          <li className='item' key={index}>
+
+            <div>
+              <img src={productInfo[item.product_id]?.image} alt={productInfo[item.product_id]?.name} />
+            </div>
+            <div>
+              <p>{productInfo[item.product_id]?.name}</p>
+            </div>
+            <div className="quantity-section">
+              <p>
+                Quantity:{' '}
+                <input
+                  type="number"
+                  value={updatedQuantity[item.product_id] || item.quantity}
+                  onChange={(e) => handleQuantityChange(item.product_id, e.target.value)}
+                />
+              </p>
+              <button onClick={() => handleChangeQuantity(item.product_id)}>Change Quantity</button>
+            </div>
+            <button onClick={() => handleDeleteProduct(item.product_id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+    </div>
+  );
   
+  
+};
 
 export default CartItem;

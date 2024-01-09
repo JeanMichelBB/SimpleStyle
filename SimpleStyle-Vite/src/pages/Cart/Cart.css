@@ -1,1 +1,22 @@
 /* src/pages/Cart/Cart.css */
+
+.cart-container {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 200px;
+}
+
+.cart-item,
+.cart-summary {
+  width: 100%;
+}
+
+@media (min-width: 968px) {
+  .cart-item,
+  .cart-summary {
+    width: 48%;
+  }
+}

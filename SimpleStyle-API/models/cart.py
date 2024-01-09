@@ -1,9 +1,9 @@
-# models/order.py
+# models/cart.py
 from pydantic import BaseModel
 from typing import List
 
-class Order(BaseModel):
-    orderId: str
+class Cart(BaseModel):
+    cartId: str
     userId: str
     products: List[dict]
     total: float

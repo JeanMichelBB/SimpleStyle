@@ -18,8 +18,10 @@ const AdminPage = () => {
     <div>
       <Header />
       <h1>Admin Page</h1>
-      <AdminAddClothingForm onAddClothing={handleAddClothing} />
-      <AdminUpdateClothingForm onUpdateClothing={handleUpdateClothing} />
+      <div className="admin-forms-container">
+        <AdminAddClothingForm onAddClothing={handleAddClothing} />
+        <AdminUpdateClothingForm onUpdateClothing={handleUpdateClothing} />
+      </div>
       <Footer />
     </div>
   );
