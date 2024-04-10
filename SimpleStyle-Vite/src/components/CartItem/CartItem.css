@@ -66,9 +66,27 @@
   border-bottom: 1px solid #ccc;
 }
 
-/* Adjust width for larger screens */
 @media (min-width: 968px) {
   .cart-item-container {
-    width: 100%; /* Set to 48% for larger screens */
+    width: 100%; 
   }
 }
+.cart-item-container button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px; 
+  cursor: pointer;
+}
+
+.cart-item-container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 10%; 
+}
+
+
+

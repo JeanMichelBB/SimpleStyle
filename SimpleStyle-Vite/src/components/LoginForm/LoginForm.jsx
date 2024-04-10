@@ -9,7 +9,7 @@ const LoginForm = () => {
     const [error, setError] = useState(null);
     const history = useHistory();
     const [loading, setLoading] = useState(false); // Define the loading state
-    
+
 
     const handleLogin = () => {
         setLoading(true);
@@ -17,8 +17,8 @@ const LoginForm = () => {
         const userData = new UserModel();
         userData.email = email;
         userData.hashed_password = hashed_password;
-        
-        
+
+
         fetch('http://127.0.0.1:8000/api/auth/login', {
             method: 'POST',
             headers: {
@@ -29,19 +29,19 @@ const LoginForm = () => {
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
-                } 
+                }
                 return response.json();
             })
             .then((data) => {
                 localStorage.setItem('user_id', data.user_id);
                 localStorage.setItem('access_token', data.access_token);
-                console.log('token', data.access_token  );
+                console.log('token', data.access_token);
                 window.location.href = '/';
                 alert('Login successful!');
             })
             .catch((error) => {
                 console.error('Error logging in:', error);
-                console.error('Error details:', error.message); 
+                console.error('Error details:', error.message);
             })
             .finally(() => {
                 setLoading(false);
@@ -71,7 +71,7 @@ const LoginForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </div>
-            <div className="form-group">
+            <div className="form-group form-group-buttons">
                 <button onClick={handleLogin}>Login</button>
                 <button onClick={handleSignIn}>Sign In</button>
             </div>

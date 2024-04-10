@@ -28,11 +28,15 @@
 .order-item-list li {
   width: 150px;
   margin-bottom: 20px;
+  position: relative;
 }
 
 .order-item-list img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 150px; 
+  object-fit: cover; 
+  border: 1px solid #ddd; 
+  border-radius: 5px; 
 }
 
 .order-summary {
