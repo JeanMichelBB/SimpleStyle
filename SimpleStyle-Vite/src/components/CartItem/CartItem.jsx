@@ -10,7 +10,7 @@ const CartItem = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/api/v1/users/${userId}`);
+        const response = await fetch(`http://127.0.0.1:8001/api/v1/users/${userId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -19,7 +19,7 @@ const CartItem = () => {
         setUserCart(userData.cart || []);
 
        const productInfoPromises = userData.cart.map(async (item) => {
-          const productResponse = await fetch(`http://127.0.0.1:8000/api/v1/products/${item.product_id}`);
+          const productResponse = await fetch(`http://127.0.0.1:8001/api/v1/products/${item.product_id}`);
           const productData = await productResponse.json();
           return { productId: item.product_id, ...productData };
         }); 
@@ -46,7 +46,7 @@ const CartItem = () => {
   const handleChangeQuantity = async (productId) => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/api/v1/cart/change_quantity/${userId}?product_id=${productId}&new_quantity=${updatedQuantity[productId] || 0}`,
+        `http://127.0.0.1:8001/api/v1/cart/change_quantity/${userId}?product_id=${productId}&new_quantity=${updatedQuantity[productId] || 0}`,
         {
           method: 'PUT',
           headers: {
@@ -74,7 +74,7 @@ const CartItem = () => {
   const handleDeleteProduct = async (productId) => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/api/v1/cart/${userId}/remove?product_id=${productId}`,
+        `http://127.0.0.1:8001/api/v1/cart/${userId}/remove?product_id=${productId}`,
         {
           method: 'DELETE',
           headers: {

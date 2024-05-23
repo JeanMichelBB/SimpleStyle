@@ -16,7 +16,7 @@ const AdminAddClothingForm = ({ onAddClothing }) => {
 
   const handleAddClothing = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/v1/products', {
+      const response = await axios.post('http://127.0.0.1:8001/api/v1/products', {
         id,
         name,
         brand,
@@ -51,46 +51,46 @@ const AdminAddClothingForm = ({ onAddClothing }) => {
       <h2>Add Clothing</h2>
       <label>
         ID:
-        <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
+        <input disabled type="text" value={id} onChange={(e) => setId(e.target.value)} />
       </label>
       <label>
         Name:
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <input disabled type="text" value={name} onChange={(e) => setName(e.target.value)} />
       </label>
       <label>
         Brand:
-        <input type="text" value={brand} onChange={(e) => setBrand(e.target.value)} />
+        <input disabled type="text" value={brand} onChange={(e) => setBrand(e.target.value)} />
       </label>
       <label>
         Description:
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+        <textarea disabled value={description} onChange={(e) => setDescription(e.target.value)} />
       </label>
       <label>
         Price:
-        <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
+        <input disabled type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
       </label>
       <label>
         Category:
-        <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
+        <input disabled type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
       </label>
       <label>
         Color:
-        <input type="text" value={color} onChange={(e) => setColor(e.target.value)} />
+        <input disabled type="text" value={color} onChange={(e) => setColor(e.target.value)} />
       </label>
       <label>
         Size:
-        <input type="text" value={size} onChange={(e) => setSize(e.target.value)} />
+        <input disabled type="text" value={size} onChange={(e) => setSize(e.target.value)} />
       </label>
       <label>
         Quantity:
-        <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+        <input disabled type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
       </label>
       <label>
         Image URL:
-        <input type="text" value={image} onChange={(e) => setImage(e.target.value)} />
+        <input disabled type="text" value={image} onChange={(e) => setImage(e.target.value)} />
       </label>
       <div className="button-group">
-        <button onClick={handleAddClothing}>Add Clothing</button>
+        <button disabled onClick={handleAddClothing}>Add Clothing</button>
       </div>
     </div>
   );

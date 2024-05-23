@@ -12,7 +12,7 @@ const CartSummary = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/api/v1/users/${userId}`);
+        const response = await fetch(`http://127.0.0.1:8001/api/v1/users/${userId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -21,7 +21,7 @@ const CartSummary = () => {
         setUserCart(userData.cart || []);
 
         const pricesPromises = userData.cart.map(async (item) => {
-          const productResponse = await fetch(`http://127.0.0.1:8000/api/v1/products/${item.product_id}`);
+          const productResponse = await fetch(`http://127.0.0.1:8001/api/v1/products/${item.product_id}`);
           const productData = await productResponse.json();
           return { productId: item.product_id, price: productData.price || 0 };
         });

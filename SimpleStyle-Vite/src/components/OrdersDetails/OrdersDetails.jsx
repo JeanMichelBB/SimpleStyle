@@ -8,7 +8,7 @@ const OrdersDetails = () => {
   useEffect(() => {
     const userId = localStorage.getItem('user_id');
 
-    fetch(`http://127.0.0.1:8000/api/v1/orders/${userId}`)
+    fetch(`http://127.0.0.1:8001/api/v1/orders/${userId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -34,7 +34,7 @@ const OrdersDetails = () => {
   const handleDeleteOrder = () => {
     const userId = localStorage.getItem('user_id');
 
-    fetch(`http://127.0.0.1:8000/api/v1/orders/${userId}`, {
+    fetch(`http://127.0.0.1:8001/api/v1/orders/${userId}`, {
       method: 'DELETE',
     })
       .then((response) => {

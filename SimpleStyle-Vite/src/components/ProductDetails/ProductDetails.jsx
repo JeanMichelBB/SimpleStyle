@@ -17,7 +17,7 @@ const ProductDetails = () => {
   const handleAddToCart = async () => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/api/v1/cart/${localStorage.getItem('user_id')}?product_id=${passedProduct.id}&quantity=${quantity}`,
+        `http://127.0.0.1:8001/api/v1/cart/${localStorage.getItem('user_id')}?product_id=${passedProduct.id}&quantity=${quantity}`,
         {
           method: 'PUT',
           headers: {

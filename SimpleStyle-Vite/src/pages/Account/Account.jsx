@@ -13,6 +13,9 @@ function Account() {
     <>
       <Header />
       <h1>Account</h1>
+      <p>
+      In this instance, the password has been disabled. Moreover, the personal information it automatically generated for security reasons.       
+      </p>
       <div className="account-page-container">
         <AccountDetails />
         <AuthDetails />

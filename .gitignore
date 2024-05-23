@@ -8,3 +8,5 @@ __pycache__
 # Ignore Firebase-related files
 firebase.json
 firebase-debug.log
+
+simplestyle-db-firebase-adminsdk-gk5hm-2314dc4618.json

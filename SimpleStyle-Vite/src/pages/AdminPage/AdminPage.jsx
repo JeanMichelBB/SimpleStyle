@@ -18,6 +18,12 @@ const AdminPage = () => {
     <div>
       <Header />
       <h1>Admin Page</h1>
+      <p>
+        creating a new clothing item got disabled because faker.js do not have specific data needed for the new item
+      </p>
+      <p> 
+        updating a clothing item got disabled. only price and quantity can be updated
+      </p>
       <div className="admin-forms-container">
         <AdminAddClothingForm onAddClothing={handleAddClothing} />
         <AdminUpdateClothingForm onUpdateClothing={handleUpdateClothing} />

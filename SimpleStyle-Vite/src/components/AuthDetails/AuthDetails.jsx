@@ -21,7 +21,7 @@ function AuthDetails() {
 
   const handleChangePassword = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/auth/users/me/password', {
+      const response = await fetch('http://127.0.0.1:8001/api/auth/users/me/password', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ function AuthDetails() {
 
   const handleChangeEmail = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/auth/users/me/email', {
+      const response = await fetch('http://127.0.0.1:8001/api/auth/users/me/email', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -90,6 +90,7 @@ function AuthDetails() {
           id="currentPassword"
           value={currentPassword}
           onChange={(e) => setCurrentPassword(e.target.value)}
+          disabled
         />
         <label htmlFor="newPassword">New Password:</label>
         <input
@@ -97,8 +98,9 @@ function AuthDetails() {
           id="newPassword"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
+          disabled
         />
-        <button onClick={handleChangePassword}>Change Password</button>
+        <button disabled onClick={handleChangePassword}>Change Password</button>
       </div>
 
       <div>
@@ -111,6 +113,7 @@ function AuthDetails() {
           id="newEmail"
           value={newEmail}
           onChange={(e) => setNewEmail(e.target.value)}
+          disabled
         />
         <label htmlFor="currentPassword">Current Password:</label>
         <input
@@ -118,8 +121,9 @@ function AuthDetails() {
           id="currentPassword"
           value={currentPassword}
           onChange={(e) => setCurrentPassword(e.target.value)}
+          disabled
         />
-        <button onClick={handleChangeEmail}>Change Email</button>
+        <button disabled onClick={handleChangeEmail}>Change Email</button>
       </div>
     </div>
   );
